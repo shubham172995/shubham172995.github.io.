@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shubham Sharma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion-personal site, calm and technical, a mathematician's poster
+   IDEA a plate from a lattice-crypto lecture: the hard problem drawn, 3b1b-style
+   PICTURE a full-width 2D lattice with basis vectors, fundamental cell and the short vector ringed
+   COLOUR deep sea ground both themes, sky blue lines, white ink, signal pink for what matters
+   TYPE Hanken Grotesk 300 very large for name, Hanken Grotesk 400/600 for text
+   LAYOUT laptop: name across top, lattice band beneath, figures row; phone: name, lattice, figures stacked */
+:root{color-scheme:dark;--bg:#0a2540;--bg2:#0d2d4d;--panel:#10355a;--ink:#f4f8fc;--mute:#a9c3dc;--sky:#8fd3ff;--pink:#ff5c8a;--line:rgba(143,211,255,.22)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+a{color:var(--sky)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.alt{background:var(--bg2)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:0 max(5vw,16px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
+.brand{font-weight:700;color:var(--ink);text-decoration:none;font-size:17px}
+.links{display:flex;gap:4px 20px;flex-wrap:wrap}
+.links a{color:var(--mute);text-decoration:none;font-size:15px;padding:10px 0}
+.links a:hover{color:var(--ink)}
+h1{font-weight:300;font-size:clamp(40px,5.6vw,68px);line-height:1.02;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance}
+h2{font-weight:600;font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h3{font-weight:600;font-size:20px;line-height:1.25;margin:0 0 8px}
+p{margin:0 0 14px;max-width:66ch}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--mute);max-width:60ch}
+.lead b{color:var(--ink);font-weight:600}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px 48px;align-items:end}
+.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--sky);color:var(--ink)}
+.btn.main{background:var(--pink);border-color:var(--pink);color:#fff}
+.btn:hover{filter:brightness(1.1)}
+.fig{position:relative;min-height:340px;height:clamp(300px,34vw,420px);margin-top:28px;border-radius:14px;background:linear-gradient(180deg,#0c2b4a,#081d33);border:1px solid var(--line);overflow:hidden}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig svg text{font:600 15px "Hanken Grotesk",sans-serif;paint-order:stroke;stroke:#0a2540;stroke-width:4px}
+.cap{font-size:14px;color:var(--mute);margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(11em,1fr));gap:12px;margin-top:28px}
+.stat{background:var(--panel);border-radius:12px;padding:18px 20px}
+.stat b{display:block;font-size:clamp(30px,3.4vw,40px);font-weight:300;line-height:1.1;white-space:nowrap}
+.stat span{font-size:15px;color:var(--mute)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 56px;align-items:start}
+.bars{display:grid;gap:12px;margin-top:8px}
+.bar{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr) 5.2em;gap:12px;align-items:center;font-size:15px}
+.bar .t{height:22px;background:rgba(143,211,255,.12);border-radius:4px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--sky);border-radius:4px}
+.bar.top .t i{background:var(--pink)}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17em),1fr));gap:16px;margin-top:24px}
+.card{background:var(--panel);border-radius:12px;padding:22px;border:1px solid var(--line)}
+.card p{font-size:16px;color:var(--mute);margin:0 0 10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--sky)}
+.svc .price{color:var(--pink);font-weight:600;font-size:15px}
+ol.time{list-style:none;margin:20px 0 0;padding:0;border-left:2px solid var(--line)}
+ol.time li{position:relative;padding:0 0 22px 22px}
+ol.time li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--sky)}
+ol.time li.now::before{background:var(--pink);border-color:var(--pink)}
+.when{font-size:14px;color:var(--mute);white-space:nowrap}
+ol.time h3{margin:2px 0 4px;font-size:18px}
+ol.time p{font-size:16px;color:var(--mute);margin:0}
+.gate{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px 56px;align-items:center}
+.ranks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rank{background:var(--panel);border-radius:12px;padding:22px;text-align:left}
+.rank b{display:block;font-size:clamp(44px,6vw,68px);font-weight:300;line-height:1}
+.rank.best b{color:var(--pink)}
+.rank span{color:var(--mute);font-size:15px}
+ul.plain{margin:0 0 18px;padding-left:20px;color:var(--mute)}
+ul.plain li{margin-bottom:6px}
+footer{border-top:1px solid var(--line)}
+.contact{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 56px;align-items:center}
+.addr{font-size:clamp(18px,2vw,22px);overflow-wrap:anywhere}
+.small{font-size:14px;color:var(--mute)}
+@media(max-width:860px){.hero-top,.two,.gate,.contact{grid-template-columns:minmax(0,1fr)}.cta{justify-content:flex-start}}
+@media(max-width:600px){.links{display:none}.bar{grid-template-columns:minmax(0,1fr) 5em}.bar .l{grid-column:1/-1}.ranks{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+.ring{animation:pulse 3.2s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Shubham Sharma</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#gate">GATE mentoring</a>
+      <a href="#path">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="band" id="top">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <h1>Post-quantum crypto, from the math to the metal</h1>
+        <p class="lead">I'm <b>Shubham Sharma</b>, a security engineer in Hyderabad. I build ML-KEM on GPUs, work on Linux kernel and TrustZone security, and help teams get ready for the move off RSA and ECC.</p>
+      </div>
+      <div class="cta">
+        <a class="btn main" href="#services">Work with me</a>
+        <a class="btn" href="#gate">GATE mentoring</a>
+      </div>
+    </div>
+    <div class="fig" id="lat" role="img" aria-label="A two-dimensional lattice with basis vectors b1 and b2, its fundamental cell shaded, and the shortest vector ringed"><svg id="latsvg"></svg></div>
+    <p class="cap">ML-KEM's security rests on lattices like this one: finding short vectors is easy in two dimensions and believed hard in hundreds.</p>
+    <div class="stats">
+      <div class="stat"><b>55×</b><span>GPU speedup over CPU for ML-KEM KeyGen</span></div>
+      <div class="stat"><b>AIR 35</b><span>GATE CS 2024 (AIR 194 in 2023)</span></div>
+      <div class="stat"><b>3.5 yrs</b><span>industry, at Qualcomm</span></div>
+      <div class="stat"><b>1.5 yrs</b><span>research, IISc · IIIT Delhi · IIT Kanpur</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="band alt" id="work">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <h2>ML-KEM on three GPUs, up to 55× faster than CPU</h2>
+        <p>My M.Tech thesis at IISc (SINESYS Lab, Prof. Utsav Banerjee) implements NIST FIPS 203 ML-KEM KeyGen and Encaps as an end-to-end CUDA pipeline with standard-conformant encodings.</p>
+        <p>The speed comes from Tensor Core NTTs, a PTX-level Keccak that uses <code>lop3.b32</code> for the χ step, device-side byte-splitting and async streams. I also analysed where the pipeline leaks timing and memory-access information, and specified the countermeasures.</p>
+        <div class="tags"><span>CUDA</span><span>PTX</span><span>Tensor Cores</span><span>NTT</span><span>FIPS 203</span><span>Side-channel analysis</span></div>
+      </div>
+      <div>
+        <h3>Throughput, thousand operations per second</h3>
+        <div class="bars" id="bars"></div>
+        <p class="small" style="margin-top:12px">Measured in my thesis. Write-up in preparation.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Linux kernel and TEE security</h3>
+        <p>Lead engineer on Qualcomm Linux Infrastructure. I work on upstream kernel support, TrustZone, hardware-backed key management, PKCS#11 in the TEE and protected memory.</p>
+        <div class="tags"><span>Linux kernel</span><span>TrustZone</span><span>OP-TEE</span><span>Secure boot</span></div>
+      </article>
+      <article class="card">
+        <h3>In-process key vault with Intel MPK</h3>
+        <p>An AES-GCM key vault in C that protects key pages with memory protection keys and uses Dyninst to block untrusted WRPKRU instructions, following the ERIM design.</p>
+        <div class="tags"><span>C</span><span>MPK</span><span>Binary instrumentation</span></div>
+      </article>
+      <article class="card">
+        <h3>GPU stateless firewall</h3>
+        <p>At IIIT Delhi I built CUDA packet filtering on top of Netmap's kernel-bypass I/O, which made the firewall 8.8× faster.</p>
+        <div class="tags"><span>CUDA</span><span>Netmap</span><span>Networking</span></div>
+      </article>
+      <article class="card">
+        <h3>5G tooling at scale</h3>
+        <p>At Qualcomm I shipped 5G features such as PDSCH rate-matching and built Wireshark dissectors plus CI automation. Verification got 8× faster.</p>
+        <div class="tags"><span>C/C++</span><span>5G NR</span><span>Wireshark</span><span>CI/CD</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <h2>What I can do for your team</h2>
+    <p class="lead">NIST now deprecates RSA and elliptic-curve crypto after 2030 at every key size. These are fixed-scope engagements for teams that need to move.</p>
+    <div class="cards">
+      <article class="card svc">
+        <h3>PQC readiness review</h3>
+        <p>I map where your code and firmware use quantum-vulnerable crypto, rank what to replace first, and hand you a migration plan built on ML-KEM and ML-DSA.</p>
+        <span class="price">Fixed scope · 2–3 weeks</span>
+      </article>
+      <article class="card svc">
+        <h3>GPU crypto acceleration</h3>
+        <p>Profiling and CUDA optimisation for NTTs, hashing and lattice crypto: kernels, memory layout and batching, with benchmarks on your hardware.</p>
+        <span class="price">Scoped per project</span>
+      </article>
+      <article class="card svc">
+        <h3>Embedded security review</h3>
+        <p>A second pair of eyes on secure boot chains, OP-TEE trusted apps and key handling on open-source stacks, with concrete fixes rather than a checklist.</p>
+        <span class="price">Fixed scope · 1–2 weeks</span>
+      </article>
+      <article class="card svc">
+        <h3>Team workshops</h3>
+        <p>Half-day or full-day sessions on post-quantum crypto, lattices and TEEs for engineering teams, pitched for people who write the code.</p>
+        <span class="price">Half or full day</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="gate">
+  <div class="wrap gate">
+    <div class="ranks">
+      <div class="rank"><b>194</b><span>GATE CS 2023</span></div>
+      <div class="rank best"><b>35</b><span>GATE CS 2024</span></div>
+    </div>
+    <div>
+      <h2>GATE CS mentoring, from someone who cleared it twice</h2>
+      <p>I took GATE CS while working full time, went from AIR 194 to AIR 35, and joined IISc. One-to-one sessions cover:</p>
+      <ul class="plain">
+        <li>a study plan built around your job or college schedule</li>
+        <li>mock analysis: where your marks actually go</li>
+        <li>picking IISc or IIT programs, and interview prep</li>
+      </ul>
+      <p>I've also TA'd a graduate quantum computing course of 80+ students and co-founded a peer group that mentored 50+ non-CS students.</p>
+      <a class="btn main" href="#contact">Book a session</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="path">
+  <div class="wrap two">
+    <div>
+      <h2>Systems first, then cryptography</h2>
+      <p>I started in 5G and networking, moved into GPUs and security, then went back to school for quantum technologies. Each step goes one layer deeper.</p>
+      <h3 style="margin-top:22px">Education</h3>
+      <p style="color:var(--mute)">M.Tech, Quantum Technologies, IISc Bangalore, 2024–2026<br>B.Tech, Electrical Engineering, PEC Chandigarh, 2015–2019</p>
+    </div>
+    <ol class="time" id="time"></ol>
+  </div>
+</section>
+
+<footer class="band alt" id="contact">
+  <div class="wrap contact">
+    <div>
+      <h2>Have a crypto migration or a GATE question?</h2>
+      <p>Email me with a couple of lines about what you need. I reply within two days.</p>
+    </div>
+    <div>
+      <p class="addr"><a href="mailto:shubhamsharma.official3@gmail.com">shubhamsharma.official3@gmail.com</a></p>
+      <p><a href="https://github.com/shubham172995">github.com/shubham172995</a></p>
+      <p class="small">Hyderabad, India · working with clients worldwide</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+const runs=[
+  {l:"RTX 5060 Ti · 512 Encaps",v:1590.9,top:true},
+  {l:"RTX 3050 Ti · 768 Encaps",v:625.1},
+  {l:"RTX 5060 Ti · 768 KeyGen",v:497.7},
+  {l:"RTX 3050 Ti · 768 KeyGen",v:204.5},
+  {l:"Jetson Orin NX · 768 Encaps",v:177.4}
+];
+const mx=Math.max(...runs.map(r=>r.v));
+document.getElementById('bars').innerHTML=runs.map(r=>`<div class="bar${r.top?' top':''}"><span class="l">${r.l}</span><span class="t"><i style="width:${(r.v/mx*100).toFixed(1)}%"></i></span><span class="v">${r.v.toLocaleString('en-US')}</span></div>`).join('');
+
+const steps=[
+  {w:"2019–2020",h:"Research associate, IIT Kanpur",p:"5G NR physical-layer modules on Xilinx boards."},
+  {w:"2020–2021",h:"Research associate, IIIT Delhi",p:"GPU stateless firewall over Netmap, 8.8× faster; IP geolocation methods."},
+  {w:"2021–2024",h:"Senior software engineer, Qualcomm",p:"5G feature work, simulation infrastructure, Wireshark dissectors and CI automation."},
+  {w:"2024–2026",h:"M.Tech, IISc Bangalore",p:"Thesis on GPU ML-KEM; TA for Introduction to Quantum Computing."},
+  {w:"2026–now",h:"Lead engineer, Qualcomm Linux Infrastructure",p:"Kernel and TEE security: TrustZone, key management, protected memory.",now:true}
+];
+document.getElementById('time').innerHTML=steps.map(s=>`<li${s.now?' class="now"':''}><span class="when">${s.w}</span><h3>${s.h}</h3><p>${s.p}</p></li>`).join('');
+
+const s=document.getElementById('latsvg');
+const draw=()=>{
+  const W=s.clientWidth,H=s.clientHeight;
+  if(!W||!H)return;
+  const u=Math.max(58,Math.min(W*0.7,H*1.4)/6.5);
+  const b1=[u*1.7,u*0.3],b2=[u*1.2,-u*0.6];
+  const ox=W*0.36,oy=H*0.5;
+  let dots='';
+  for(let i=-20;i<=20;i++)for(let j=-14;j<=14;j++){
+    const x=ox+i*b1[0]+j*b2[0],y=oy+i*b1[1]+j*b2[1];
+    if(x<-10||x>W+10||y<-10||y>H+10)continue;
+    dots+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" fill="#8fd3ff" opacity=".55"/>`;
+  }
+  let grid='';
+  for(let j=-10;j<=10;j++){const x0=ox-20*b1[0]+j*b2[0],y0=oy-20*b1[1]+j*b2[1];grid+=`<line x1="${x0}" y1="${y0}" x2="${x0+40*b1[0]}" y2="${y0+40*b1[1]}"/>`;}
+  for(let i=-16;i<=16;i++){const x0=ox+i*b1[0]-12*b2[0],y0=oy+i*b1[1]-12*b2[1];grid+=`<line x1="${x0}" y1="${y0}" x2="${x0+24*b2[0]}" y2="${y0+24*b2[1]}"/>`;}
+  const P=(a,b)=>[ox+a*b1[0]+b*b2[0],oy+a*b1[1]+b*b2[1]];
+  const c=[P(0,0),P(1,0),P(1,1),P(0,1)].map(p=>p.join(',')).join(' ');
+  const sv=P(1,-1);
+  const a1=P(1,0),a2=P(0,1);
+  const small=W<520;
+  s.innerHTML=`<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fff"/></marker><marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ff5c8a"/></marker><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#8fd3ff" stop-opacity=".18"/><stop offset="1" stop-color="#8fd3ff" stop-opacity="0"/></radialGradient></defs>
+  <ellipse cx="${ox}" cy="${oy}" rx="${W*0.45}" ry="${H*0.6}" fill="url(#glow)"/>
+  <g stroke="#8fd3ff" stroke-opacity=".12" stroke-width="1">${grid}</g>
+  <polygon points="${c}" fill="#8fd3ff" fill-opacity=".14" stroke="#8fd3ff" stroke-opacity=".5"/>
+  ${dots}
+  <line x1="${ox}" y1="${oy}" x2="${a1[0]}" y2="${a1[1]}" stroke="#fff" stroke-width="3" marker-end="url(#ah)"/>
+  <line x1="${ox}" y1="${oy}" x2="${a2[0]}" y2="${a2[1]}" stroke="#fff" stroke-width="3" marker-end="url(#ah)"/>
+  <line x1="${ox}" y1="${oy}" x2="${sv[0]}" y2="${sv[1]}" stroke="#ff5c8a" stroke-width="3.5" marker-end="url(#ap)"/>
+  <circle class="ring" cx="${sv[0]}" cy="${sv[1]}" r="15" fill="none" stroke="#ff5c8a" stroke-width="2.5"/>
+  <circle cx="${ox}" cy="${oy}" r="6" fill="#fff"/>
+  <text x="${a1[0]+12}" y="${a1[1]+22}" fill="#fff">b₁</text>
+  <text x="${a2[0]+14}" y="${a2[1]-4}" fill="#fff">b₂</text>
+  <text x="${sv[0]+20}" y="${sv[1]+34}" fill="#ff5c8a">${small?'shortest vector':'shortest vector: b₁ − b₂'}</text>`;
+};
+const ro=new ResizeObserver(draw);
+ro.observe(s);
+}
+</script>
+</body>
+</html>
